@@ -117,7 +117,7 @@ def _get_in_flight_counts():
     Returns:
         dict[tuple[str, str], int]
     """
-    for rm in _in_flight_requests:
+    for rm in list(_in_flight_requests):
         rm.update_metrics()
 
     # Map from (method, name) -> int, the number of in flight requests of that
