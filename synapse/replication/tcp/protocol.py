@@ -618,7 +618,7 @@ tcp_transport_kernel_read_buffer = LaterGauge(
 
 
 tcp_inbound_commands = LaterGauge(
-    "synapse_replication_tcp_inbound_commands", "", ["command", "name", "conn_id"],
+    "synapse_replication_tcp_protocol_inbound_commands", "", ["command", "name", "conn_id"],
     lambda: {
         (k[0], p.name, p.conn_id): count
         for p in connected_connections
@@ -626,7 +626,7 @@ tcp_inbound_commands = LaterGauge(
     })
 
 tcp_outbound_commands = LaterGauge(
-    "synapse_replication_tcp_outbound_commands", "", ["command", "name", "conn_id"],
+    "synapse_replication_tcp_protocol_outbound_commands", "", ["command", "name", "conn_id"],
     lambda: {
         (k[0], p.name, p.conn_id): count
         for p in connected_connections
@@ -634,5 +634,5 @@ tcp_outbound_commands = LaterGauge(
     })
 
 # number of updates received for each RDATA stream
-inbound_rdata_count = Counter("synapse_replication_tcp_inbound_rdata_count", "",
+inbound_rdata_count = Counter("synapse_replication_tcp_protocol_inbound_rdata_count", "",
                               ["stream_name"])
